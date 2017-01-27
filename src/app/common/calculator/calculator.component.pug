@@ -1,0 +1,38 @@
+.container
+  .row
+    .col-lg-6.col-md-7.col-xs-12.col-lg-offset-3.col-md-offset-2
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Calculadora iva
+        .panel-body
+          form
+            .row
+              .col.col-lg-6.align-self-start
+                .col.col-lg-12
+                  .form-group
+                    label(for='base') base:
+                    input#base.form-control(type='text')
+                .col.col-lg-12
+                  .form-group
+                    label(for='iva') IVA:
+                    input#iva.form-control(type='text', disabled='')
+                .col.col-lg-12
+                  .form-group
+                    label(for='total') Total:
+                    input#total.form-control(type='text')
+              .col.col-lg-4.align-self-end.col-lg-offset-2
+                .col.col-lg-12
+                  .radio
+                    label
+                      input(type='radio', name='optradio', value='4')
+                      | 4%
+                .col.col-lg-12
+                  .radio
+                    label
+                      input(type='radio', name='optradio', value='10')
+                      | 10%
+                .col.col-lg-12
+                  .radio
+                    label
+                      input(type='radio', name='optradio', value='21')
+                      | 21%
