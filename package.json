@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
     "start": "ENVIRONMENT=dev webpack-dev-server --inline --hot --colors --host 0.0.0.0 --port 8003 --open --client-log-level error --content-base build"
   },
   "keywords": [],
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "bootstrap-loader": "^2.0.0-beta.20",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "jquery": "^3.1.1",
