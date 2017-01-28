@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "",
     "prestart": "npm install",
     "start": "ENVIRONMENT=dev webpack-dev-server --inline --hot --colors --host 0.0.0.0 --port 8003 --open --client-log-level error --content-base build"
   },
