@@ -8,9 +8,12 @@ export class CalculatorComponentCtrl {
     this.BASE = 'base';
     this.IVA = 'iva';
     this.TOTAL = 'Total';
+    this.base = '';
+    this.iva = '';
+    this.total = '';
   }
 
-  valueChanged(value) {
+  onValueChanged(value) {
     switch(value) {
         case this.BASE:
           this.baseChanged();

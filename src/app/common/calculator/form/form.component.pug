@@ -1,0 +1,38 @@
+.row
+    .col.col-lg-6.align-self-start
+        .col.col-lg-12
+            .form-group
+                label(for='base') base:
+                input#base.form-control(
+                type='text'
+                ng-model='$ctrl.base'
+                ng-change='$ctrl.valueChanged($ctrl.BASE)'
+                )
+        .col.col-lg-12
+            .form-group
+                label(for='iva') IVA:
+                input#iva.form-control(type='text', disabled='')
+        .col.col-lg-12
+            .form-group
+                label(for='total') Total:
+                input#total.form-control(
+                type='text'
+                ng-model='$ctrl.total'
+                ng-change='$ctrl.valueChanged($ctrl.TOTAL)'
+                )
+    .col.col-lg-4.align-self-end.col-lg-offset-2
+        .col.col-lg-12
+            .radio
+                label
+                    input(type='radio', name='optradio', value='4' ng-model='$ctrl.iva' ng-click='$ctrl.valueChanged($ctrl.IVA)')
+                    | 4%
+        .col.col-lg-12
+            .radio
+                label
+                    input(type='radio', name='optradio', value='10' ng-model='$ctrl.iva' ng-click='$ctrl.valueChanged($ctrl.IVA)')
+                    | 10%
+        .col.col-lg-12
+            .radio
+                label
+                    input(type='radio', name='optradio', value='21' ng-model='$ctrl.iva' ng-click='$ctrl.valueChanged($ctrl.IVA)')
+                    | 21%
