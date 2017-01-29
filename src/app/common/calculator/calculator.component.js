@@ -1,7 +1,10 @@
 const componentTemplate = require('./calculator.component.pug');
 
 export class CalculatorComponentCtrl {
-  constructor(){
+  constructor(CalculatorService) {
+    'ngInject';
+
+    this.calculatorService = CalculatorService;
   }
 
   $onInit() {
@@ -10,15 +13,15 @@ export class CalculatorComponentCtrl {
 
   ivaChanged({iva, base, total}) {
     if (angular.isDefined(base) && base != '') {
-      this.total = Math.round(base * (1+iva/100));
+      this.total = this.calculatorService.calculateTotal(iva, base);
     } else if (angular.isDefined(total) && total !='') {
-      this.base = Math.round(total / (1+iva/100));
+      this.base = this.calculatorService.calculateBase(iva, total);
     }
   }
 
   baseChanged({iva, base, total}) {
     if (angular.isDefined(iva) && base != '') {
-      this.total = Math.round(base * (1+iva/100));
+      this.total = this.calculatorService.calculateTotal(iva, base);
     } else if(angular.isDefined(total)) {
       this.total = '';
     }
@@ -26,7 +29,7 @@ export class CalculatorComponentCtrl {
 
   totalChanged({iva, base, total}) {
     if (angular.isDefined(iva) && total != '') {
-        this.base = Math.round(total / (1+iva/100));
+        this.base = this.calculatorService.calculateBase(iva, total);
     } else if(angular.isDefined(base)) {
         this.base = '';
     }
@@ -39,9 +42,7 @@ export class CalculatorComponentCtrl {
       iva,
       total
     };
-    const lines = [];
-    lines.push(line);
-    this.lines = lines;
+    this.lines = Object.assign({}, this.calculatorService.addLine(line));
   }
 }
 

@@ -5,12 +5,7 @@ export class ListCalculatorComponentCtrl {
 
     }
 
-    $onInit() {
-
-    }
-
     $onChanges(changes) {
-        console.log(changes);
         if(changes.lines) {
             this.lines = Object.assign({}, changes.lines.currentValue);
         }
@@ -23,4 +18,4 @@ export const ListCalculatorComponent = {
     bindings: {
         lines: '<'
     }
-}
+};
