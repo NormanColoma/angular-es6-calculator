@@ -1,15 +1,19 @@
-table.table
-    thead
+table.table.table-striped
+    tbody
         tr
             th Concepto
             th Base
             th Iva
             th Total
-    tbody
+            th Eliminar
         tr(ng-repeat="line in $ctrl.lines")
             th(ng-bind='line.concept')
             th(ng-bind='line.base')
             th(ng-bind='line.iva')
             th(ng-bind='line.total')
+            th
+                button.btn.btn-sm.btn-danger(type='button')
+                    span.glyphicon.glyphicon-trash
+
 
 
