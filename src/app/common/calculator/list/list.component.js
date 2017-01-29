@@ -2,12 +2,17 @@ const componentTemplate = require('./list.component.pug');
 
 export class ListCalculatorComponentCtrl {
     constructor() {
-
+        this.empty = true;
     }
 
     $onChanges(changes) {
-        if(changes.lines) {
+        if (changes.lines) {
             this.lines = Object.assign({}, changes.lines.currentValue);
+            if (angular.equals({}, this.lines)) {
+                this.empty = true;
+            } else {
+                this.empty = false;
+            }
         }
     }
 }
