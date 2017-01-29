@@ -5,47 +5,43 @@ export class CalculatorComponentCtrl {
   }
 
   $onInit() {
-    this.BASE = 'base';
-    this.IVA = 'iva';
-    this.TOTAL = 'Total';
+    this.lines = [];
   }
 
-  valueChanged(value) {
-    switch(value) {
-        case this.BASE:
-          this.baseChanged();
-          break;
-        case this.IVA:
-          this.ivaChanged();
-          break;
-        case this.TOTAL:
-          this.totalChanged();
-          break;
+  ivaChanged({iva, base, total}) {
+    if (angular.isDefined(base) && base != '') {
+      this.total = Math.round(base * (1+iva/100));
+    } else if (angular.isDefined(total) && total !='') {
+      this.base = Math.round(total / (1+iva/100));
     }
   }
 
-  ivaChanged() {
-    if (angular.isDefined(this.base) && this.base != '') {
-      this.total = Math.round(this.base * (1+this.iva/100));
-    } else if (angular.isDefined(this.total) && this.total !='') {
-      this.base = Math.round(this.total / (1+this.iva/100));
-    }
-  }
-
-  baseChanged() {
-    if (angular.isDefined(this.iva) && this.base != '') {
-        this.total = Math.round(this.base * (1+this.iva/100));
-    } else if(angular.isDefined(this.total)) {
+  baseChanged({iva, base, total}) {
+    if (angular.isDefined(iva) && base != '') {
+      this.total = Math.round(base * (1+iva/100));
+    } else if(angular.isDefined(total)) {
       this.total = '';
     }
   }
 
-  totalChanged() {
-    if (angular.isDefined(this.iva) && this.total != '') {
-        this.base = Math.round(this.total / (1+this.iva/100));
-    } else if(angular.isDefined(this.base)) {
+  totalChanged({iva, base, total}) {
+    if (angular.isDefined(iva) && total != '') {
+        this.base = Math.round(total / (1+iva/100));
+    } else if(angular.isDefined(base)) {
         this.base = '';
     }
+  }
+
+  onFormSubmit({iva, base, total, concept}) {
+    const line = {
+      concept,
+      base,
+      iva,
+      total
+    };
+    const lines = [];
+    lines.push(line);
+    this.lines = lines;
   }
 }
 

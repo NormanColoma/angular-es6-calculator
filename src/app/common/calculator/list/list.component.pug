@@ -1,7 +1,15 @@
 table.table
     thead
         tr
+            th Concepto
             th Base
             th Iva
             th Total
+    tbody
+        tr(ng-repeat="line in $ctrl.lines")
+            th(ng-bind='line.concept')
+            th(ng-bind='line.base')
+            th(ng-bind='line.iva')
+            th(ng-bind='line.total')
+
 

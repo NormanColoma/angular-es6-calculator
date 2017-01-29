@@ -8,9 +8,19 @@ export class ListCalculatorComponentCtrl {
     $onInit() {
 
     }
+
+    $onChanges(changes) {
+        console.log(changes);
+        if(changes.lines) {
+            this.lines = Object.assign({}, changes.lines.currentValue);
+        }
+    }
 }
 
 export const ListCalculatorComponent = {
     template: componentTemplate,
-    controller: ListCalculatorComponentCtrl
+    controller: ListCalculatorComponentCtrl,
+    bindings: {
+        lines: '<'
+    }
 }
