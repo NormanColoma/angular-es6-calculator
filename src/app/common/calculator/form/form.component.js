@@ -41,7 +41,8 @@ export class FormComponentCtrl {
         }
     }
 
-    formSubmit() {
+    formSubmit(form) {
+        console.log(form);
         this.onFormSubmit(this.eventEmitter({ iva: this.iva, base: this.base, total: this.total, concept: this.concept }))
     }
 }

@@ -7,6 +7,9 @@ ng-form(name="calculatorFormChild")
                     input#concept.form-control(
                         type='text'
                         ng-model='$ctrl.concept'
+                        ng-class="{'error': calculatorFormChild.concept.$invalid && !calculatorFormChild.concept.$pristine}"
+                        name='concept'
+                        required
                     )
             .col.col-lg-12
                 .form-group
@@ -15,6 +18,10 @@ ng-form(name="calculatorFormChild")
                         type='text'
                         ng-model='$ctrl.base'
                         ng-change='$ctrl.valueChanged($ctrl.BASE)'
+                        ng-pattern="/^[0-9]*$/"
+                        ng-class="{'error': calculatorFormChild.base.$invalid && !calculatorFormChild.base.$pristine}"
+                        name='base'
+                        required
                     )
             .col.col-lg-12
                 .form-group
@@ -23,6 +30,10 @@ ng-form(name="calculatorFormChild")
                         type='text',
                         disabled='',
                         ng-model='$ctrl.iva'
+                        ng-pattern="/^[0-9]*$/"
+                        ng-class="{'error': calculatorFormChild.iva.$invalid && !calculatorFormChild.optradio.$pristine}"
+                        name='iva'
+                        required
                     )
             .col.col-lg-12
                 .form-group
@@ -31,22 +42,49 @@ ng-form(name="calculatorFormChild")
                         type='text'
                         ng-model='$ctrl.total'
                         ng-change='$ctrl.valueChanged($ctrl.TOTAL)'
+                        ng-pattern="/^[0-9]*$/"
+                        ng-class="{'error': calculatorFormChild.total.$invalid && !calculatorFormChild.total.$pristine}"
+                        name='total'
+                        required
                     )
         .col.col-lg-4.align-self-end.col-lg-offset-2
             .col.col-lg-12
                 .radio
                     label
-                        input(type='radio', name='optradio', value='4' ng-model='$ctrl.iva' ng-click='$ctrl.valueChanged($ctrl.IVA)')
+                        input(
+                                type='radio', 
+                                name='optradio', 
+                                value='4' 
+                                ng-model='$ctrl.iva' 
+                                ng-click='$ctrl.valueChanged($ctrl.IVA)'
+                            )
                         | 4%
             .col.col-lg-12
                 .radio
                     label
-                        input(type='radio', name='optradio', value='10' ng-model='$ctrl.iva' ng-click='$ctrl.valueChanged($ctrl.IVA)')
+                        input(
+                                type='radio', 
+                                name='optradio', 
+                                value='10' 
+                                ng-model='$ctrl.iva' 
+                                ng-click='$ctrl.valueChanged($ctrl.IVA)'
+                            )
                         | 10%
             .col.col-lg-12
                 .radio
                     label
-                        input(type='radio', name='optradio', value='21' ng-model='$ctrl.iva' ng-click='$ctrl.valueChanged($ctrl.IVA)')
+                        input(
+                                type='radio', 
+                                name='optradio', 
+                                value='21' 
+                                ng-model='$ctrl.iva' 
+                                ng-click='$ctrl.valueChanged($ctrl.IVA)'
+                            )
                         | 21%
             .col.col-lg-12
-                input(type='submit' value='Guardar' ng-click="$ctrl.formSubmit()").btn.btn-default
+                input(
+                    type='submit' 
+                    value='Guardar' 
+                    ng-click="$ctrl.formSubmit(calculatorFormChild)" 
+                    ng-disabled='calculatorFormChild.$invalid'
+                ).btn.btn-default
