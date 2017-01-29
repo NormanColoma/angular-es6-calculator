@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 import { FormCalculatorComponent } from './form.component';
 
 export const FormCalculatorModule =
