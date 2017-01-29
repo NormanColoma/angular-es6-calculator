@@ -12,7 +12,7 @@ table.table.table-striped(ng-if='!$ctrl.empty')
             th(ng-bind='line.iva')
             th(ng-bind='line.total')
             th
-                button.btn.btn-sm.btn-danger(type='button')
+                button.btn.btn-sm.btn-danger(type='button', ng-click='$ctrl.deleteLine(line.id)')
                     span.glyphicon.glyphicon-trash
 
 

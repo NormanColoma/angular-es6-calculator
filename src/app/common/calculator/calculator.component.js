@@ -40,9 +40,15 @@ export class CalculatorComponentCtrl {
       concept,
       base,
       iva,
-      total
+      total,
+      id: this.calculatorService.generateId()
     };
     this.lines = Object.assign({}, this.calculatorService.addLine(line));
+  }
+
+  onDelete({ id }) {
+    console.log(id);
+    this.lines = Object.assign({}, this.calculatorService.removeLine(id));
   }
 }
 

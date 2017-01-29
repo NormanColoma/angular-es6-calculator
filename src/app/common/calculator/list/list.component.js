@@ -1,7 +1,12 @@
 const componentTemplate = require('./list.component.pug');
 
 export class ListCalculatorComponentCtrl {
-    constructor() {
+    constructor(EventEmitter) {
+        'ngInject';
+        this.eventEmitter = EventEmitter;
+    }
+
+    $onInit() {
         this.empty = true;
     }
 
@@ -15,12 +20,17 @@ export class ListCalculatorComponentCtrl {
             }
         }
     }
+
+    deleteLine(id) {
+        this.onDelete(this.eventEmitter({ id }));
+    }
 }
 
 export const ListCalculatorComponent = {
     template: componentTemplate,
     controller: ListCalculatorComponentCtrl,
     bindings: {
-        lines: '<'
+        lines: '<',
+        onDelete: '&'
     }
 };
