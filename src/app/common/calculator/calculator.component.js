@@ -1,14 +1,19 @@
 const componentTemplate = require('./calculator.component.pug');
 
 export class CalculatorComponentCtrl {
-  constructor(CalculatorService) {
+  constructor(CalculatorService, AuthService, $state) {
     'ngInject';
 
     this.calculatorService = CalculatorService;
+    this.authService = AuthService;
+    this.state = $state;
   }
 
   $onInit() {
     this.lines = [];
+    if (!this.authService.isLoggedIn()) {
+      this.state.go('login');
+    }
   }
 
   ivaChanged({iva, base, total}) {
