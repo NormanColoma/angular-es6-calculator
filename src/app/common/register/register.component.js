@@ -1,12 +1,17 @@
 const componentTemplate = require('./register.component.pug');
 
 export class RegisterComponentCtrl {
-    constructor() {
+    constructor(AuthService, $state) {
+        'ngInject';
 
+        this.authService = AuthService;
+        this.state = $state;
     }
 
     $onInit() {
-
+        if (this.authService.isLoggedIn()) {
+            this.state.go('calculator');
+        }
     }
 }
 
