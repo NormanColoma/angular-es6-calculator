@@ -8,8 +8,9 @@
           form(
               name="registerForm" 
               role='form' 
-              novalidate ng-submit="$ctrl.login()"
-               ng-model-options= "{ updateOn: 'blur keyup', debounce: {blur: 0, keyup: 250}}"
+              novalidate 
+              ng-submit="$ctrl.registerUser()"
+              ng-model-options= "{ updateOn: 'blur keyup', debounce: {blur: 0, keyup: 250}}"
             )
             fieldset
               .form-group

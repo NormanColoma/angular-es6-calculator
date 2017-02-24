@@ -52,7 +52,6 @@ export class CalculatorComponentCtrl {
   }
 
   onDelete({ id }) {
-    console.log(id);
     this.lines = Object.assign({}, this.calculatorService.removeLine(id));
   }
 }

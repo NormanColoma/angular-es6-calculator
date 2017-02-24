@@ -14,6 +14,16 @@ export class RegisterComponentCtrl {
             this.state.go('calculator');
         }
     }
+
+    registerUser(){
+        const user = {
+            email: this.account.email,
+            pass: this.account.password
+        }
+        this.authService.registerUser(user).then(() => {
+            this.state.go('login');
+        });
+    }
 }
 
 export const RegisterComponent = {
