@@ -1,17 +1,19 @@
 const componentTemplate = require('./login.component.pug');
 
 export class LoginComponentCtrl {
-    constructor(AuthService, $state, $timeout) {
+    constructor(AuthService, $state) {
         'ngInject';
 
         this.authService = AuthService;
         this.state = $state;
-        this.timeout = $timeout;
     }
 
     $onInit() {
         this.credentials = {};
         this.loginErrors = false;
+        if(this.authService.isLoggedIn()){
+            this.state.go('calculator');
+        }
     }
 
     login(){
