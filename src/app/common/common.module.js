@@ -6,6 +6,7 @@ import ngMessages from 'angular-messages';
 import { CalculatorModule } from './calculator/calculator.module';
 import { LoginModule } from './login/login.module';
 import { AuthService } from './auth/auth.service';
+import { RegisterModule } from './register/register.module';
 
 export const CommonModule = angular
   .module('common.module', [
@@ -13,7 +14,8 @@ export const CommonModule = angular
     LoginModule,
     uiRouter,
     'ui.router.state.events',
-    ngMessages
+    ngMessages,
+    RegisterModule
   ])
   .service('AuthService', AuthService)
   .config(($urlRouterProvider, $stateProvider) => {
