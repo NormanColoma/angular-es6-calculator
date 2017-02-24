@@ -15,12 +15,15 @@ export class AuthService {
     }
 
     login(email, password){
-        const userFound = this.users.filter(user => user.email === email)[0];
-        if(userFound.pass === password) {
+        const usersFound = this.users.filter(user => user.email === email);
+        const userFound = usersFound.length > 0 ? usersFound[0] : null;
+        if (userFound === null) {
+            return false;
+        }
+        if (userFound.pass === password) {
             this.loggedUser = true;
             return true;
         }
-        return false;
             
     }
 
