@@ -15,8 +15,7 @@ export class AuthService {
     }
 
     login(email, password){
-        const usersFound = this.users.filter(user => user.email === email);
-        const userFound = usersFound.length > 0 ? usersFound[0] : null;
+        const userFound = this.findUser(email);
         if (userFound === null) {
             return false;
         }
@@ -31,5 +30,20 @@ export class AuthService {
         if (this.loggedUser)
             return true;
         return false;
+    }
+
+    existsAccount(email){
+       if (this.findUser(email) === null) {
+           return false;
+       }
+
+       return true;
+    }
+
+    findUser(email){
+        const usersFound = this.users.filter(user => user.email === email);
+        const emailFound = usersFound.length > 0 ? usersFound[0] : null;
+
+        return emailFound
     }
 }
