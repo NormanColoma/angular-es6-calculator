@@ -11,7 +11,8 @@ module.exports = {
     vendor: [
         'angular',
         'angular-ui-router',
-        'bootstrap'
+        'bootstrap',
+        'angular-messages'
     ]
   },
   module: {

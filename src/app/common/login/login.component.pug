@@ -8,9 +8,26 @@
           form(name="loginForm" role='form' novalidate ng-submit="$ctrl.login()")
             fieldset
               .form-group
-                input.form-control(placeholder='E-mail', name='email', type='text' ng-model="$ctrl.credentials.email" required)
+                input.form-control(
+                  placeholder='E-mail', 
+                  name='email', 
+                  type='email' 
+                  ng-model="$ctrl.credentials.email",
+                  required)
+                div(ng-messages='loginForm.email.$error' role='alert'  ng-if='loginForm.email.$dirty').error-message
+                  div(ng-message='required') Introduce el e-mail
+                  div(ng-message='email') E-mail inválido: example@test.es
+
               .form-group
-                input.form-control(placeholder='Password', name='password', type='password', value='',  ng-model="$ctrl.credentials.password" required)
+                input.form-control(
+                  placeholder='Password', 
+                  name='password', 
+                  type='password', 
+                  value='',  
+                  ng-model="$ctrl.credentials.password" 
+                  required)
+                div(ng-messages='loginForm.password.$error' role='alert'  ng-if='loginForm.password.$dirty').error-message
+                  div(ng-message='required') Introduce la contraseña
               input.btn.btn-lg.btn-success.btn-block(type='submit', value='Login' ng-disabled="loginForm.$invalid")
               p.pull-right.margin-top-register-message Regístrate 
                 a 
