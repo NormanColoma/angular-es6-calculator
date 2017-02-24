@@ -9,6 +9,7 @@ export class RegisterComponentCtrl {
     }
 
     $onInit() {
+        this.account = {};
         if (this.authService.isLoggedIn()) {
             this.state.go('calculator');
         }

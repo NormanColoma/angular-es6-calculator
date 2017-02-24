@@ -5,7 +5,12 @@
         .panel-heading
           h3.panel-title Regístra tu cuenta
         .panel-body
-          form(name="registerForm" role='form' novalidate ng-submit="$ctrl.login()")
+          form(
+              name="registerForm" 
+              role='form' 
+              novalidate ng-submit="$ctrl.login()"
+               ng-model-options= "{ updateOn: 'blur keyup', debounce: {blur: 0, keyup: 250}}"
+            )
             fieldset
               .form-group
                 input.form-control(
@@ -15,8 +20,9 @@
                   ng-model="$ctrl.account.email",
                   required
                   exists-account
+                  ng-model-options= "{ updateOn: 'default blur',debounce: {default: 250, blur: 0}}"
                 )
-                div(ng-messages='registerForm.email.$error' role='alert'  ng-if='registerForm.email.$dirty').error-message
+                div(ng-messages='registerForm.email.$error' role='alert'  ng-if='registerForm.email.$dirty || registerForm.email.$touched').error-message
                   div(ng-message='required') Introduce el email
                   div(ng-message='email') Email inválido: example@test.es
                   div(ng-message="existsAccount") El email ya existe
@@ -28,8 +34,9 @@
                   type='password', 
                   value='',  
                   ng-model="$ctrl.account.password" 
-                  required)
-                div(ng-messages='registerForm.password.$error' role='alert'  ng-if='registerForm.password.$dirty').error-message
+                  required
+                )
+                div(ng-messages='registerForm.password.$error' role='alert'  ng-if='registerForm.password.$dirty || registerForm.password.$touched').error-message
                   div(ng-message='required') Introduce la contraseña
               .form-group
                 input.form-control(
@@ -38,9 +45,12 @@
                   type='password', 
                   value='',  
                   ng-model="$ctrl.account.secondPassword" 
-                  required)
-                div(ng-messages='registerForm.secondPassword.$error' role='alert'  ng-if='registerForm.secondPassword.$dirty').error-message
+                  required
+                  compare-password
+                )
+                div(ng-messages='registerForm.secondPassword.$error' role='alert'  ng-if='registerForm.secondPassword.$dirty || registerForm.secondPassword.$touched').error-message
                   div(ng-message='required') Introduce la contraseña nuevamente
+                  div(ng-message='comparePassword') Las contraseñas no coinciden
               input.btn.btn-lg.btn-success.btn-block(type='submit', value="Finalizar" ng-disabled="registerForm.$invalid")
               p.pull-right.margin-top-register-message ¿Ya tienes cuenta? 
                 a(ui-sref="login")
