@@ -102,3 +102,7 @@ fabric.properties
 
 ##Visual Studio Code 
 .vscode/settings.json
+
+##Karma reports 
+
+reports/
