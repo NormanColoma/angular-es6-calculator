@@ -1,44 +1,17 @@
 .container
-  .row
-     .col-lg-4.col-md-6.col-sm-8.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-2
-      .panel.panel-default
-        .panel-heading
-          h3.panel-title Acceda 
-        .panel-body
-          form(
-            name="loginForm"
-            role='form' 
-            novalidate
-            ng-submit="$ctrl.login()"
-            ng-model-options= "{ updateOn: 'blur default', debounce: {blur: 0, default: 250}}"
-          )
-            fieldset
-              .form-group
-                input.form-control(
-                  placeholder='E-mail', 
-                  name='email', 
-                  type='email' 
-                  ng-model="$ctrl.credentials.email",
-                  required)
-                div(ng-messages='loginForm.email.$error' role='alert'  ng-if='loginForm.email.$dirty || loginForm.email.$touched').error-message
-                  div(ng-message='required') Introduce el email
-                  div(ng-message='email') Email inválido: example@test.es
+    .row
 
-              .form-group
-                input.form-control(
-                  placeholder='Password', 
-                  name='password', 
-                  type='password', 
-                  value='',  
-                  ng-model="$ctrl.credentials.password" 
-                  required)
-                div(ng-messages='loginForm.password.$error' role='alert'  ng-if='loginForm.password.$dirty || loginForm.password.$touched').error-message
-                  div(ng-message='required') Introduce la contraseña
-              input.btn.btn-lg.btn-success.btn-block(type='submit', value='Login' ng-disabled="loginForm.$invalid")
-              p.pull-right.margin-top-register-message Regístrate 
-                a(ui-sref="register")
-                  strong aquí
-  .row(ng-if="$ctrl.loginErrors")
+
+        .col-lg-4.col-md-6.col-sm-8.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-2
+            .panel.panel-default
+                .panel-heading
+                    h3.panel-title Acceda 
+                .panel-body
+                  login-form(
+                    credentials="$ctrl.credentials"
+                    on-login="$ctrl.login($event)"
+                  )
+    .row(ng-if="$ctrl.loginErrors")
      .col-lg-4.col-md-6.col-sm-8.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-2
       .alert.alert-danger.alert-dismissable.fade.in
         a(class="close" data-dismiss="alert" aria-label="close" ng-click="$ctrl.onClosedAlert()") &times;
