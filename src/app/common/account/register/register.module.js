@@ -10,13 +10,4 @@ export const RegisterModule = angular
         ComparePasswordModule
     ])
     .component('registerComponent', RegisterComponent)
-    .config(($stateProvider) => {
-        'ngInject'; 
-
-        $stateProvider
-            .state('register', {
-                 url: '/register',
-                 template: '<register-component></register-component>'
-            })
-    })
     .name;
