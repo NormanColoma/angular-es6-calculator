@@ -50,7 +50,6 @@ export class AuthService {
     registerUser(user){
         return new Promise((resolve, reject) => {
             this.users.push(user);
-            console.log(this.users);
             resolve();
         });
     }

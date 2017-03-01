@@ -1,7 +1,5 @@
 const componentTemplate = require('./form.component.pug');
 
-require('./form.component.scss');
-
 class LoginFormComponentCtrl {
     constructor(EventEmitter) {
         'ngInject';
@@ -15,7 +13,7 @@ class LoginFormComponentCtrl {
 
     $onChanges(changes) {
         if (changes.credentials && !changes.credentials.isFirstChange()) {
-            this.changes = Object.assign({}, changes.currentValue);
+            this.credentials = Object.assign({}, changes.credentials.currentValue);
         }
     }
 
