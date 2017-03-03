@@ -39,7 +39,7 @@ module.exports = {
       },
        {
         test: /\.pug$/,
-        loader: 'pug-html-loader'
+        loaders: ['html-loader', 'pug-html-loader']
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
