@@ -6,3 +6,8 @@ test:
     - npm install ajv
   override: 
      - ENVIRONMENT=test karma start --single-run
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: calculator-system
