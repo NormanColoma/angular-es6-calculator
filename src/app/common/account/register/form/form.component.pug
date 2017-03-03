@@ -45,6 +45,7 @@ form(
                 div(ng-message='required') Introduce la contraseña nuevamente
                 div(ng-message='comparePassword') Las contraseñas no coinciden
         input.btn.btn-lg.btn-success.btn-block(type='submit', value="Finalizar" ng-disabled="registerForm.$invalid" ng-click="$ctrl.register()")
-        p.pull-right.margin-top-register-message ¿Ya tienes cuenta? 
-            a(ui-sref="login")
-                strong  accede
+        p.pull-right.margin-top-register-message 
+            em ¿Ya tienes cuenta? 
+                a(ui-sref="login")
+                    strong  accede

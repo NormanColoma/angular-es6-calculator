@@ -7,7 +7,6 @@ ng-form(name="calculatorFormChild")
                     input#concept.form-control(
                         type='text'
                         ng-model='$ctrl.concept'
-                        ng-class="{'error': calculatorFormChild.concept.$invalid && !calculatorFormChild.concept.$pristine}"
                         name='concept'
                         required
                     )
@@ -19,10 +18,11 @@ ng-form(name="calculatorFormChild")
                         ng-model='$ctrl.base'
                         ng-change='$ctrl.valueChanged($ctrl.BASE)'
                         ng-pattern="/^[0-9]*$/"
-                        ng-class="{'error': calculatorFormChild.base.$invalid && !calculatorFormChild.base.$pristine}"
                         name='base'
                         required
                     )
+                    div(ng-messages='calculatorFormChild.base.$error' role='alert').error-message
+                        div(ng-message="pattern") Inroduce una cantidad p.e: 19
             .col.col-lg-12
                 .form-group
                     label(for='iva') IVA:
@@ -31,7 +31,6 @@ ng-form(name="calculatorFormChild")
                         disabled='',
                         ng-model='$ctrl.iva'
                         ng-pattern="/^[0-9]*$/"
-                        ng-class="{'error': calculatorFormChild.iva.$invalid && !calculatorFormChild.optradio.$pristine}"
                         name='iva'
                         required
                     )
@@ -43,10 +42,11 @@ ng-form(name="calculatorFormChild")
                         ng-model='$ctrl.total'
                         ng-change='$ctrl.valueChanged($ctrl.TOTAL)'
                         ng-pattern="/^[0-9]*$/"
-                        ng-class="{'error': calculatorFormChild.total.$invalid && !calculatorFormChild.total.$pristine}"
                         name='total'
                         required
                     )
+                    div(ng-messages='calculatorFormChild.total.$error' role='alert').error-message
+                        div(ng-message="pattern") Inroduce una cantidad p.e: 19
         .col.col-lg-4.align-self-end.col-lg-offset-2
             .col.col-lg-12
                 .radio
@@ -87,4 +87,4 @@ ng-form(name="calculatorFormChild")
                     value='Guardar' 
                     ng-click="$ctrl.formSubmit(calculatorFormChild)" 
                     ng-disabled='calculatorFormChild.$invalid'
-                ).btn.btn-default
+                ).btn.btn-success.float-sm-right

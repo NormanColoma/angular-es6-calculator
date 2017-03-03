@@ -1,6 +1,7 @@
 $error-message-color: red;
 $error-message-margin-top: 5px;
 $margin-input-bottom: 15px;
+$margin-top-table: 30px;
 
 body {
     padding-top: 60px;
@@ -13,4 +14,11 @@ body {
 
 .margin-input {
     margin-bottom: $margin-input-bottom;
+}
+
+.table {
+    margin-top: 30px;
+}
+.table > tbody > tr > th {
+    vertical-align: middle !important;
 }

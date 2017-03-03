@@ -3,7 +3,6 @@ const app      = express();
 
 app.use(express.static(__dirname + '/build'));
 
-//app.set('view engine', 'html');
 app.set('views', './build')
 
 

@@ -1,18 +1,22 @@
-table.table.table-striped(ng-if='!$ctrl.empty')
+table.table(ng-if='!$ctrl.empty')
     tbody
-        tr
-            th Concepto
-            th Base
-            th Iva
-            th Total
-            th Eliminar
+        tr.active
+            th.text-center Concepto
+            th.text-center Base 
+            th.text-center Iva %
+            th.text-center Total € 
+            th.text-right Eliminar
         tr(ng-repeat="line in $ctrl.lines")
-            th(ng-bind='line.concept')
-            th(ng-bind='line.base')
-            th(ng-bind='line.iva')
-            th(ng-bind='line.total')
+            th.text-center
+                small(ng-bind='line.concept')
+            th.text-center
+                small(ng-bind='line.base')
+            th.text-center
+                small(ng-bind='line.iva')
+            th.text-center
+                small(ng-bind='line.total')
             th
-                button.btn.btn-sm.btn-danger(type='button', ng-click='$ctrl.deleteLine(line.id)')
+                button.btn.btn-sm.btn-danger(type='button', ng-click='$ctrl.deleteLine(line.id)').pull-right
                     span.glyphicon.glyphicon-trash
 
 
