@@ -8,9 +8,11 @@ export class ExistsAccountDirective {
   link(scope, element, attrs, ngModelController) {
     ngModelController.$validators.existsAccount = ((modelValue, viewValue) => {
       const account = viewValue;
-      const result = this.authService.existsAccount(account);
-      if (result) {
+      if (typeof account != 'undefined'){
+        const result = this.authService.existsAccount(account);
+        if (result) {
           return false;
+        }
       }
       return true;
     });

@@ -15,12 +15,12 @@ export class RegisterComponentCtrl {
         }
     }
 
-    registerUser(){
-        const user = {
+    registerUser({ user }){
+        const us = {
             email: this.account.email,
             pass: this.account.password
         }
-        this.authService.registerUser(user).then(() => {
+        this.authService.registerUser(us).then(() => {
             this.state.go('login');
         });
     }

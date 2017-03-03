@@ -16,7 +16,8 @@ export class LoginComponentCtrl {
         }
     }
 
-    login(){
+    login({ credentials }){
+        this.credentials = Object.assign({}, credentials);
         if(this.authService.login(this.credentials.email, this.credentials.password)) {
             this.state.go('calculator');
         } else {

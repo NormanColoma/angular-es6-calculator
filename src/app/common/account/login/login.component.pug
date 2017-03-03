@@ -1,0 +1,19 @@
+.container
+    .row
+
+
+        .col-lg-4.col-md-6.col-sm-8.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-2
+            .panel.panel-default
+                .panel-heading
+                    h3.panel-title Accede
+                .panel-body
+                  login-form(
+                    credentials="$ctrl.credentials"
+                    on-login="$ctrl.login($event)"
+                  )
+    .row(ng-if="$ctrl.loginErrors")
+     .col-lg-4.col-md-6.col-sm-8.col-xs-12.col-lg-offset-3.col-md-offset-3.col-sm-offset-2
+      .alert.alert-danger.alert-dismissable.fade.in
+        a(class="close" data-dismiss="alert" aria-label="close" ng-click="$ctrl.onClosedAlert()") &times;
+        strong Incorrecto
+        |  E-mail o password incorrectos.
